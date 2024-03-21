@@ -727,7 +727,7 @@ footskip=0.7cm% 页脚 1.8cm %
   \pdfbookmark[0]{Abstract}{eng-abstract}
   \begin{center}
     \vspace*{0.5pt} % 添加额外空白
-  {\bf\zihao{3} \BIT@label@englishabstract\par}
+  {\sffamily\centering\bfseries\zihao{3} \BIT@label@englishabstract\par}
 \end{center}
 \vskip 10pt
 \parindent=2em % 设置首行缩进为2em
