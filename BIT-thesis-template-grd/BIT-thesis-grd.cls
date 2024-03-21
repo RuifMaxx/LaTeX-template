@@ -875,6 +875,7 @@ footskip=0.7cm% 页脚 1.8cm %
   %%%============================术语=====================
   \newcommand{\bit@denotation@name}{主要符号对照表}
   \newenvironment{denotation}[1][2.5cm]{
+    \cleardoublepage
     \pdfbookmark[0]{主要符号对照表}{denote}
     \vspace*{0.5bp} % 添加额外空白
       {\sffamily\centering\bfseries\zihao{3} \bit@denotation@name\par} % no tocline
