@@ -8,7 +8,7 @@
 %% math packages -- conflict with xunicode
 \RequirePackage{amsmath,amsthm,amsfonts,amssymb,bm,mathrsfs}
 % 直立希腊字母字体
-\RequirePackage{upgreek,tikz}
+\RequirePackage{upgreek}
 
 \NeedsTeXFormat{LaTeX2e}[2005/12/01]
 \ProvidesClass{BIT-thesis-grd}
@@ -32,9 +32,9 @@
 %%
 %% the setup of ctex package
 %%
-\def\contentsname{目\BITspace 录}
-\def\listfigurename{插\BITspace 图}
-\def\listtablename{表\BITspace 格}
+\def\CTEX@contentsname{目录}
+\def\CTEX@listfigurename{插图索引}
+\def\CTEX@listtablename{表格索引}
 
 %%
 %% 封面标题
@@ -185,6 +185,7 @@ footskip=0.7cm% 页脚 1.8cm %
       fixskip = true,
   }
 }
+
 %% 设置一级章节格式
 % 黑体四号加粗顶左，行距22磅，与上一节的间距为1行，与下面正文或节标题的段间间距为0.5行。序号与题目间空一格。
 
@@ -226,7 +227,7 @@ footskip=0.7cm% 页脚 1.8cm %
 
 \RequirePackage{titletoc}
 \titlecontents{chapter}[0pt]{\songti \zihao{4}}
-    {\bf\thecontentslabel\hspace{\ccwd}}{\bf}
+    {\thecontentslabel\hspace{\ccwd}}{}
     {\hspace{.5em}\titlerule*{.}\contentspage}
 \titlecontents{section}[2\ccwd]{\songti \zihao{-4}}
     {\thecontentslabel\hspace{\ccwd}}{}
@@ -417,17 +418,18 @@ footskip=0.7cm% 页脚 1.8cm %
 
 
 %% hyperref package
-\definecolor{navyblue}{RGB}{0,0,128} 
+
 \RequirePackage{hyperref}
+%\definecolor{navyblue}{RGB}{0,0,128}   %增加海军蓝颜色
 \hypersetup{
   bookmarksnumbered,%
   linktoc=all,
-  colorlinks=true,
-  citecolor=navyblue,
+  colorlinks=false,
+  citecolor=blue,
   filecolor=cyan,
-  linkcolor=navyblue,
-  linkbordercolor=navyblue,
-  urlcolor=navyblue,
+  linkcolor=blue,
+  linkbordercolor=blue,
+  urlcolor=blue,
   plainpages=false,%
   pdfstartview=FitH
 }
@@ -502,17 +504,18 @@ footskip=0.7cm% 页脚 1.8cm %
   \fi
  }
 
- \newcommand{\floatingbox}[3]{%
- \begin{tikzpicture}[remember picture, overlay]
-     \node[anchor=north east, inner sep=5pt, outer sep=0pt] at ($(current page.north east) + (-2.0cm,-3.5cm)$) {%右，上
-         \fbox{\parbox{3.5cm}{\raggedright\zihao{5}\setstretch{1.0} #1 \\ #2 \\ #3}}%
-     };
- \end{tikzpicture}
+\newcommand{\floatingbox}[3]{%
+\begin{tikzpicture}[remember picture, overlay]
+    \node[anchor=north east, inner sep=5pt, outer sep=0pt] at ($(current page.north east) + (-2.0cm,-3.5cm)$) {%右，上
+        \fbox{\parbox{3.5cm}{\raggedright\zihao{5}\setstretch{1.0} #1 \\ #2 \\ #3}}%
+    };
+\end{tikzpicture}
 }
+
 
 \newcommand\makeInfo[1]%
  {
-  \newpage
+  \cleardoublepage
   \cleardoublepage
   \thispagestyle{empty}
 
@@ -630,6 +633,8 @@ footskip=0.7cm% 页脚 1.8cm %
     \begin{minipage}{1em}
         {\heiti\zihao{3}\BIT@value@vtitle}
         \vskip 2cm
+        {\heiti\zihao{3}\BIT@value@author}
+        \vskip 2cm
         {\heiti\zihao{3}\BIT@value@school}
     \end{minipage}
    \end{center}
@@ -694,7 +699,14 @@ footskip=0.7cm% 页脚 1.8cm %
  \newenvironment{abstract}
  {
   \cleardoublepage
-  \chapter{\BIT@label@abstract}
+  \pdfbookmark[0]{摘要}{abstract}
+  \begin{center}
+  \vspace*{0.5bp} % 添加额外空白
+  {\sffamily\centering\bfseries\zihao{3} \BIT@label@abstract\par}
+  \end{center}
+  \vskip 10bp
+  \parindent=2em % 设置首行缩进为2em
+  \par
  }
  {}
 %下一页从偶数页开始
@@ -713,8 +725,15 @@ footskip=0.7cm% 页脚 1.8cm %
  \newenvironment{englishabstract}
  {
   \clearpage
-  \chapter{\BIT@label@englishabstract}
- }
+  \pdfbookmark[0]{Abstract}{eng-abstract}
+  \begin{center}
+    \vspace*{0.5pt} % 添加额外空白
+  {\sffamily\centering\bfseries\zihao{3} \BIT@label@englishabstract\par}
+\end{center}
+\vskip 10pt
+\parindent=2em % 设置首行缩进为2em
+\par
+  }
  {}
 
  % 英文摘要
@@ -856,9 +875,13 @@ footskip=0.7cm% 页脚 1.8cm %
   %%%============================术语=====================
   \newcommand{\bit@denotation@name}{主要符号对照表}
   \newenvironment{denotation}[1][2.5cm]{
-      \chapter{\bit@denotation@name} % no tocline
+    \pdfbookmark[0]{主要符号对照表}{denote}
+    \vspace*{0.5bp} % 添加额外空白
+      {\sffamily\centering\bfseries\zihao{3} \bit@denotation@name\par} % no tocline
+    \par
+    \vspace*{10bp}
       \noindent\begin{list}{}%
-      {\vskip-30bp\zihao{-4}
+        {\zihao{-4}
        \renewcommand\makelabel[1]{##1\hfil}
        \setlength{\labelwidth}{#1} % 标签盒子宽度
        \setlength{\labelsep}{0.5cm} % 标签与列表文本距离
