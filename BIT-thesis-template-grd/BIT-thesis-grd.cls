@@ -516,7 +516,6 @@ footskip=0.7cm% 页脚 1.8cm %
 \newcommand\makeInfo[1]%
  {
   \cleardoublepage
-  \cleardoublepage
   \thispagestyle{empty}
 
 %udc ltz 
