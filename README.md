@@ -1,6 +1,19 @@
 
-# BIT-Thesis v1.5
-# 北京理工大学硕士（博士）学位论文LaTeX模板
+# BIT-Thesis v1.6
+
+## 2024.3.22 更新
+
+* 参照研究生院的最新[Word论文模板](https://grd.bit.edu.cn/xwgz/xwgz2/wjxz_xwgz/b119746.htm)，对原创性声明页做了修改，中文信息页添加了“特别类型”选框
+
+* 整体模板设置，参照2018研究生院2018年的[LaTeX学位论文模板](https://grd.bit.edu.cn/xwgz/xwgz2/wjxz_xwgz/b117824.htm)进行
+
+* 英文摘要标题改为了Times New Roman
+
+* 对论文页面摆布进行了增强
+
+* 默认打印模式改为双面打印
+
+## 北京理工大学硕士（博士）学位论文LaTeX模板
 
 ![Beijing Institude of Technology](https://github.com/y-yating/image/raw/master/image-school/bit-thesis.png)
 
