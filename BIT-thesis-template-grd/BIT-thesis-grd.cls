@@ -8,8 +8,7 @@
 %% math packages -- conflict with xunicode
 \RequirePackage{amsmath,amsthm,amsfonts,amssymb,bm,mathrsfs}
 % 直立希腊字母字体
-\RequirePackage{upgreek}
-
+\RequirePackage{upgreek,fontspec}
 \NeedsTeXFormat{LaTeX2e}[2005/12/01]
 \ProvidesClass{BIT-thesis-grd}
   [2018/03/25 v1.2 BIT-thesis-grd document class]
@@ -78,7 +77,6 @@
 \def\BIT@value@institute{}
 \def\BIT@value@chairman{}
 \def\BIT@label@statement{}
-
 
 %% 设置圆圈的格式 或使用\textcircled
 \usepackage{tikz}
@@ -503,7 +501,7 @@ footskip=0.7cm% 页脚 1.8cm %
     \cleardoublepage
   \fi
  }
-
+\usetikzlibrary{calc} % 导入 calc 库用于坐标计算
 \newcommand{\floatingbox}[3]{%
 \begin{tikzpicture}[remember picture, overlay]
     \node[anchor=north east, inner sep=5pt, outer sep=0pt] at ($(current page.north east) + (-2.0cm,-3.5cm)$) {%右，上
@@ -727,7 +725,7 @@ footskip=0.7cm% 页脚 1.8cm %
   \pdfbookmark[0]{Abstract}{eng-abstract}
   \begin{center}
     \vspace*{0.5pt} % 添加额外空白
-  {\sffamily\centering\bfseries\zihao{3} \BIT@label@englishabstract\par}
+  {\bfseries\fontspec{Times New Roman}\zihao{3} \BIT@label@englishabstract\par}
 \end{center}
 \vskip 10pt
 \parindent=2em % 设置首行缩进为2em
