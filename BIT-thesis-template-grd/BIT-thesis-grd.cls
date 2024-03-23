@@ -504,8 +504,8 @@ footskip=0.7cm% 页脚 1.8cm %
 \usetikzlibrary{calc} % 导入 calc 库用于坐标计算
 \newcommand{\floatingbox}[3]{%
 \begin{tikzpicture}[remember picture, overlay]
-    \node[anchor=north east, inner sep=5pt, outer sep=0pt] at ($(current page.north east) + (-2.0cm,-3.5cm)$) {%右，上
-        \fbox{\parbox{3.5cm}{\raggedright\zihao{5}\setstretch{1.0} #1 \\ #2 \\ #3}}%
+    \node[anchor=north east, inner sep=10pt, outer sep=0pt] at ($(current page.north east) + (-2.2cm,-3.5cm)$) {%右，上
+        \fbox{\parbox{3.7cm}{\raggedright\zihao{5}\setstretch{1.2} #1 \\ #2 \\ #3}}%
     };
 \end{tikzpicture}
 }
@@ -521,7 +521,7 @@ footskip=0.7cm% 页脚 1.8cm %
   {\heiti \zihao{5} \noindent \BIT@label@classification} \BIT@value@classification \\
   {\heiti \zihao{5} \BIT@label@UDC}  \BIT@value@UDC
 }
-\floatingbox{$\bigstar$ 特别类型}{$\square$ 交叉研究方向}{$\square$ 政府项目留学生}
+\floatingbox{$\bigstar$ \heiti \zihao{5} 特别类型}{$\square$ \heiti \zihao{5} 交叉研究方向}{$\square$ \heiti \zihao{5} 政府项目留学生}
    \begin{center}
 
     \vskip \stretch{1}
@@ -696,12 +696,14 @@ footskip=0.7cm% 页脚 1.8cm %
  \newenvironment{abstract}
  {
   \cleardoublepage
+
+  \vspace*{1bp}
+  
+  {\setstretch{0.7} \sffamily\centering\bfseries\zihao{3} \BIT@label@abstract\par}
+
+  \vskip 16bp
+
   \pdfbookmark[0]{摘要}{abstract}
-  \begin{center}
-  \vspace*{0.5bp} % 添加额外空白
-  {\sffamily\centering\bfseries\zihao{3} \BIT@label@abstract\par}
-  \end{center}
-  \vskip 10bp
   \parindent=2em % 设置首行缩进为2em
   \par
  }
@@ -723,11 +725,13 @@ footskip=0.7cm% 页脚 1.8cm %
  {
   \clearpage
   \pdfbookmark[0]{Abstract}{eng-abstract}
-  \begin{center}
-    \vspace*{0.5pt} % 添加额外空白
-  {\bfseries\fontspec{Times New Roman}\zihao{3} \BIT@label@englishabstract\par}
-\end{center}
-\vskip 10pt
+
+    \vspace*{1pt} % 添加额外空白
+    
+  {\setstretch{0.7} \bfseries\centering\fontspec{Times New Roman}\zihao{3} \BIT@label@englishabstract\par}
+
+  \vskip 16bp
+
 \parindent=2em % 设置首行缩进为2em
 \par
   }
@@ -874,10 +878,9 @@ footskip=0.7cm% 页脚 1.8cm %
   \newenvironment{denotation}[1][2.5cm]{
     \cleardoublepage
     \pdfbookmark[0]{主要符号对照表}{denote}
-    \vspace*{0.5bp} % 添加额外空白
-      {\sffamily\centering\bfseries\zihao{3} \bit@denotation@name\par} % no tocline
-    \par
-    \vspace*{10bp}
+    \vspace*{1bp} % 添加额外空白
+      {\setstretch{0.7} \sffamily\centering\bfseries\zihao{3} \bit@denotation@name\par} % no tocline
+    \vskip 10bp
       \noindent\begin{list}{}%
         {\zihao{-4}
        \renewcommand\makelabel[1]{##1\hfil}
