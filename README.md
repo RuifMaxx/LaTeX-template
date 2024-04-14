@@ -11,7 +11,7 @@
 
 * 对论文页面摆布进行了增强
 
-* 默认打印模式改为双面打印
+* Overleaf 地址[https://www.overleaf.com/read/vkmtsvccpkmn#599df5](https://www.overleaf.com/read/vkmtsvccpkmn#599df5)
 
 ## 北京理工大学硕士（博士）学位论文LaTeX模板
 
